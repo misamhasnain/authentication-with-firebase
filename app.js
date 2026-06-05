@@ -28,6 +28,11 @@ createUserWithEmailAndPassword(auth, user.value, pass.value)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
+
+    console.log("user has been registered");
+    console.log(user);
+    
+    
     
   })
   
