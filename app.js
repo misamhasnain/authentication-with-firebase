@@ -7,26 +7,13 @@ let form = document.querySelector("#form");
 let validInfo = () => {
 
     
-    if (!user.value.includes("@")) {
-        alert("Email must contain @");
-        return false;
-    }
-
-    
     let password = pass.value;
-
-    let hasLetter = /[a-zA-Z]/.test(password);
-    let hasNumber = /[0-9]/.test(password);
 
     if (password.length < 6) {
         alert("Password must be at least 6 characters");
         return false;
     }
 
-    if (!hasLetter || !hasNumber) {
-        alert("Password must contain letters and numbers");
-        return false;
-    }
 
     return true;
 };
@@ -41,7 +28,7 @@ createUserWithEmailAndPassword(auth, user.value, pass.value)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    // ...
+    
   })
   
 
@@ -58,4 +45,6 @@ form.addEventListener("submit", (e) => {
     if (validInfo()) {
         getUser();
     }
+    user.value = "";
+    pass.value = "";
 });
